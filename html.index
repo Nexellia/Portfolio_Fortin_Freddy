@@ -1,0 +1,2122 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freddy Fortin | Consultant & Formateur IA</title>
+    <meta name="description" content="Consultant et formateur expert en intelligence artificielle. Transformation pédagogique et intégration stratégique de l'IA en entreprise.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ══════════════════════════════════════════════════════════════════════
+           VARIABLES & THEME SYSTEM
+        ══════════════════════════════════════════════════════════════════════ */
+        :root {
+            --font-main: 'Space Grotesk', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            /* Light Theme */
+            --bg-primary: #fafafa;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f0f0f0;
+            --bg-accent: #e8f4f8;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a5a;
+            --text-muted: #8a8a9a;
+            --accent-primary: #0066cc;
+            --accent-secondary: #00aa88;
+            --accent-gradient: linear-gradient(135deg, #0066cc 0%, #00aa88 100%);
+            --border-color: #e0e0e0;
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-medium: 0 8px 40px rgba(0,0,0,0.1);
+            --shadow-glow: 0 0 60px rgba(0,102,204,0.15);
+        }
+        
+        [data-theme="dark"] {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a24;
+            --bg-accent: #162028;
+            --text-primary: #f0f0f5;
+            --text-secondary: #b0b0c0;
+            --text-muted: #707080;
+            --accent-primary: #4da6ff;
+            --accent-secondary: #4dd4b8;
+            --accent-gradient: linear-gradient(135deg, #4da6ff 0%, #4dd4b8 100%);
+            --border-color: #2a2a3a;
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.3);
+            --shadow-medium: 0 8px 40px rgba(0,0,0,0.4);
+            --shadow-glow: 0 0 80px rgba(77,166,255,0.2);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           BASE & RESET
+        ══════════════════════════════════════════════════════════════════════ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+        
+        ::selection {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           NAVIGATION STICKY
+        ══════════════════════════════════════════════════════════════════════ */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container.scrolled {
+            box-shadow: var(--shadow-soft);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-logo::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-primary);
+            background: var(--bg-accent);
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 44px;
+            height: 24px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        [data-theme="dark"] .theme-toggle::after {
+            transform: translateX(20px);
+        }
+        
+        .nav-cta {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,102,204,0.3);
+        }
+        
+        /* Mobile menu */
+        .nav-mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .nav-mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           HERO SECTION - ASYMÉTRIQUE
+        ══════════════════════════════════════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            padding: 120px 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .hero-content {
+            position: relative;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-accent);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent-secondary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .hero-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .stat-item {
+            text-align: left;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--accent-primary);
+        }
+        
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            max-width: 420px;
+            width: 100%;
+        }
+        
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 24px;
+            padding: 1px;
+            background: var(--accent-gradient);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .avatar-ring {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            padding: 3px;
+            background: var(--accent-gradient);
+        }
+        
+        .avatar-ring img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--bg-secondary);
+        }
+        
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        
+        .card-identity h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .card-identity p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .card-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .metric-box {
+            background: var(--bg-tertiary);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .metric-box .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        
+        .metric-box .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        
+        .card-partners {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+        
+        .card-partners-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+        
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .partner-tag {
+            background: var(--bg-accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        
+        /* Floating elements */
+        .floating-badge {
+            position: absolute;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-soft);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .floating-badge.top-right {
+            top: -20px;
+            right: -30px;
+            animation-delay: 0.5s;
+        }
+        
+        .floating-badge.bottom-left {
+            bottom: 40px;
+            left: -40px;
+            animation-delay: 1s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           SECTIONS COMMUNES
+        ══════════════════════════════════════════════════════════════════════ */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            margin-bottom: 4rem;
+        }
+        
+        .section-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           POURQUOI ME CHOISIR
+        ══════════════════════════════════════════════════════════════════════ */
+        #pourquoi {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent-gradient);
+            transition: height 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .feature-highlight {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           FORMATIONS PHARES
+        ══════════════════════════════════════════════════════════════════════ */
+        .formations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+        
+        .formation-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .formation-item:hover {
+            border-color: var(--accent-primary);
+            background: var(--bg-accent);
+        }
+        
+        .formation-number {
+            min-width: 32px;
+            height: 32px;
+            background: var(--accent-gradient);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+        
+        .formation-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .formation-content p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           EXPERTISE - TABS
+        ══════════════════════════════════════════════════════════════════════ */
+        #expertise {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .expertise-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .tab-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+        
+        .tab-btn.active {
+            background: var(--accent-gradient);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .expertise-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .expertise-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+        }
+        
+        .expertise-item:hover {
+            transform: translateX(4px);
+            border-color: var(--accent-secondary);
+        }
+        
+        .expertise-item strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .expertise-item span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           TÉMOIGNAGES - CAROUSEL STYLE
+        ══════════════════════════════════════════════════════════════════════ */
+        .testimonials-container {
+            position: relative;
+        }
+        
+        .testimonials-track {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-size: 4rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            opacity: 0.3;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+        
+        .author-info {
+            font-size: 0.85rem;
+        }
+        
+        .author-info .name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .author-info .context {
+            color: var(--text-muted);
+        }
+        
+        .testimonial-score {
+            background: var(--bg-accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           PARCOURS - TIMELINE MODERNE
+        ══════════════════════════════════════════════════════════════════════ */
+        #parcours {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 2.5rem;
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            border: 3px solid var(--bg-secondary);
+        }
+        
+        .timeline-item.current::before {
+            box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.2);
+        }
+        
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-company {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+        
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .timeline-desc ul {
+            list-style: none;
+            margin-top: 0.75rem;
+        }
+        
+        .timeline-desc li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-desc li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-secondary);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           PUBLICATIONS
+        ══════════════════════════════════════════════════════════════════════ */
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .publication-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .publication-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .publication-preview {
+            height: 140px;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.3);
+        }
+        
+        .publication-info {
+            padding: 1.5rem;
+        }
+        
+        .publication-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .publication-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .publication-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           FORMATIONS & CERTIFICATIONS
+        ══════════════════════════════════════════════════════════════════════ */
+        #certifications {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .certifications-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .cert-category h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .cert-category h3::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+        
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .cert-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .cert-item:hover {
+            border-color: var(--accent-primary);
+        }
+        
+        .cert-year {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent-primary);
+            min-width: 48px;
+        }
+        
+        .cert-name {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+        
+        .cert-item.in-progress {
+            border-left: 3px solid var(--accent-secondary);
+        }
+        
+        .cert-item.in-progress .cert-year {
+            color: var(--accent-secondary);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           CONTACT SECTION
+        ══════════════════════════════════════════════════════════════════════ */
+        #contact {
+            text-align: center;
+        }
+        
+        .contact-header {
+            margin-bottom: 3rem;
+        }
+        
+        .contact-header .section-title {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            min-width: 240px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-primary);
+        }
+        
+        .contact-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-accent);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .contact-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-card p {
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+        }
+        
+        .contact-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 1.25rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════════════════════════════════ */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .footer-brand::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+        
+        .footer-copy {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .hero-content {
+                order: 2;
+            }
+            
+            .hero-visual {
+                order: 1;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .hero-actions {
+                justify-content: center;
+            }
+            
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .floating-badge {
+                display: none;
+            }
+            
+            .certifications-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                border-bottom: 1px solid var(--border-color);
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-mobile-toggle {
+                display: flex;
+            }
+            
+            .nav-cta {
+                display: none;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero {
+                padding: 100px 1.5rem 3rem;
+                min-height: auto;
+            }
+            
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+            
+            .hero-card {
+                padding: 1.5rem;
+            }
+            
+            .card-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         NAVIGATION
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <header class="nav-container">
+        <nav>
+            <a href="#" class="nav-logo">Freddy Fortin</a>
+            
+            <ul class="nav-links">
+                <li><a href="#pourquoi">Pourquoi moi</a></li>
+                <li><a href="#formations">Formations</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#temoignages">Témoignages</a></li>
+                <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer de thème"></button>
+                <a href="mailto:freddy.fortin@nexellia.io" class="nav-cta">Me contacter</a>
+            </div>
+            
+            <div class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>Disponible pour vos projets 2026</span>
+            </div>
+            
+            <h1>Consultant & Formateur<br>Intelligence Artificielle</h1>
+            
+            <p class="hero-subtitle">Transformation pédagogique et intégration stratégique de l'IA en entreprise</p>
+            
+            <p class="hero-description">
+                J'accompagne les organisations et les professionnels dans l'adoption intelligente et responsable de l'IA, 
+                en transformant les défis technologiques en opportunités concrètes.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">91/100</div>
+                    <div class="stat-label">Expertise formateur</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">88/100</div>
+                    <div class="stat-label">Satisfaction NPS</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">80%</div>
+                    <div class="stat-label">Pratique</div>
+                </div>
+            </div>
+            
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">
+                    <span>Discutons de votre projet</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#formations" class="btn-secondary">
+                    <span>Voir les formations</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="hero-card">
+                <div class="card-header">
+                    <div class="avatar-ring">
+                        <div class="avatar-placeholder">FF</div>
+                    </div>
+                    <div class="card-identity">
+                        <h3>Freddy Fortin</h3>
+                        <p>Consultant & Formateur IA</p>
+                    </div>
+                </div>
+                
+                <div class="card-metrics">
+                    <div class="metric-box">
+                        <div class="value">91</div>
+                        <div class="label">Score expertise</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="value">88</div>
+                        <div class="label">Satisfaction</div>
+                    </div>
+                </div>
+                
+                <div class="card-partners">
+                    <div class="card-partners-label">Partenaires de confiance</div>
+                    <div class="partner-logos">
+                        <span class="partner-tag">CEGOS</span>
+                        <span class="partner-tag">Lefebvre Dalloz</span>
+                        <span class="partner-tag">Pulsa Conseil</span>
+                    </div>
+                </div>
+                
+                <div class="floating-badge top-right">
+                    <span>🎯</span>
+                    <span>Résultats mesurables</span>
+                </div>
+                
+                <div class="floating-badge bottom-left">
+                    <span>⚡</span>
+                    <span>80% pratique</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         POURQUOI ME CHOISIR
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <section id="pourquoi">
+        <div class="section-header">
+            <span class="section-label">// Valeur ajoutée</span>
+            <h2 class="section-title">Pourquoi me choisir ?</h2>
+            <p class="section-desc">Des formations qui allient expertise technique, pédagogie active et résultats mesurables.</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Expertise reconnue</h3>
+                <p>Formateur évalué à <span class="feature-highlight">91/100</span> pour l'expertise et <span class="feature-highlight">88/100</span> pour la satisfaction globale.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Approche sur-mesure</h3>
+                <p>Des parcours adaptés à vos enjeux, avec <span class="feature-highlight">80% de pratique</span> et des cas concrets issus de votre métier.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Résultats tangibles</h3>
+                <p>Augmentation de la productivité, automatisation des processus, et adoption réussie de l'IA dans vos équipes.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Partenariats stratégiques</h3>
+                <p>Collaboration avec des leaders de la formation : CEGOS, Lefebvre Dalloz Compétences, Pulsa Conseil.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FORMATIONS PHARES
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <section id="formations">
+        <div class="section-header">
+            <span class="section-label">// Catalogue</span>
+            <h2 class="section-title">Formations phares en IA</h2>
+            <p class="section-desc">Des modules conçus pour déclencher l'action et ancrer les compétences.</p>
+        </div>
+        
+        <div class="formations-grid">
+            <div class="formation-item">
+                <span class="formation-number">01</span>
+                <div class="formation-content">
+                    <h4>Productivité & Efficacité</h4>
+                    <p>Utiliser l'IA pour gagner du temps et optimiser ses processus</p>
+                </div>
+            </div>
+            
+            <div class="formation-item">
+                <span class="formation-number">02</span>
+                <div class="formation-content">
+                    <h4>Création de contenu</h4>
+                    <p>Générer des supports professionnels avec l'IA (textes, visuels, vidéos)</p>
+                </div>
+            </div>
+            
+            <div class="formation-item">
+                <span class="formation-number">03</span>
+                <div class="formation-content">
+                    <h4>Créativité & Innovation</h4>
+                    <p>Stimuler l'innovation grâce aux outils d'IA générative</p>
+                </div>
+            </div>
+            
+            <div class="formation-item">
+                <span class="formation-number">04</span>
+                <div class="formation-content">
+                    <h4>Veille stratégique</h4>
+                    <p>Automatiser et analyser sa veille avec l'IA</p>
+                </div>
+            </div>
+            
+            <div class="formation-item">
+                <span class="formation-number">05</span>
+                <div class="formation-content">
+                    <h4>Transformation des métiers</h4>
+                    <p>Intégrer l'IA dans les missions formateur ou manager</p>
+                </div>
+            </div>
+            
+            <div class="formation-item">
+                <span class="formation-number">06</span>
+                <div class="formation-content">
+                    <h4>Assistants IA personnalisés</h4>
+                    <p>Créer des outils sur-mesure pour simplifier le quotidien</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         DOMAINES D'EXPERTISE
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <section id="expertise">
+        <div class="section-header">
+            <span class="section-label">// Compétences</span>
+            <h2 class="section-title">Domaines d'expertise</h2>
+            <p class="section-desc">Une triple compétence technique, pédagogique et stratégique.</p>
+        </div>
+        
+        <div class="expertise-tabs">
+            <button class="tab-btn active" onclick="switchTab('technique')">Maîtrise Technique</button>
+            <button class="tab-btn" onclick="switchTab('pedagogie')">Pédagogie</button>
+            <button class="tab-btn" onclick="switchTab('accompagnement')">Accompagnement</button>
+            <button class="tab-btn" onclick="switchTab('approche')">Approche</button>
+        </div>
+        
+        <div id="technique" class="tab-content active">
+            <div class="expertise-list">
+                <div class="expertise-item">
+                    <strong>IA générative & Prompt Engineering</strong>
+                    <span>Utilisation experte de ChatGPT, Gemini, Claude, Microsoft Copilot et conception de prompts optimisés</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Diagnostic & Cas d'usage</strong>
+                    <span>Identification des opportunités IA adaptées à vos besoins métiers</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Déploiement d'assistants IA</strong>
+                    <span>Intégration d'outils sur-mesure et formation des équipes</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Automatisation no-code</strong>
+                    <span>Création de workflows intelligents sans développement technique</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Analyse critique des outputs IA</strong>
+                    <span>Détection des biais, hallucinations et évaluation de la qualité</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Stratégie & Gouvernance IA</strong>
+                    <span>Élaboration de cadres conformes aux enjeux réglementaires et éthiques</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="pedagogie" class="tab-content">
+            <div class="expertise-list">
+                <div class="expertise-item">
+                    <strong>Ingénierie de formation</strong>
+                    <span>Parcours certifiants, adaptés aux besoins et aux publics</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Animation multiforme</strong>
+                    <span>Sessions en présentiel, distanciel ou hybride (de 3h à 5 jours)</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Création d'agents IA pédagogiques</strong>
+                    <span>Assistants conversationnels et outils métiers personnalisés</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Production de contenus multimédias</strong>
+                    <span>Podcasts, vidéos, modules e-learning</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Évaluation & Amélioration</strong>
+                    <span>Mesure des acquis et analyse de satisfaction (NPS moyen : 88/100)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="accompagnement" class="tab-content">
+            <div class="expertise-list">
+                <div class="expertise-item">
+                    <strong>Acculturation des dirigeants</strong>
+                    <span>Sensibilisation aux enjeux business et stratégiques de l'IA</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Chartes d'usage responsable</strong>
+                    <span>Élaboration de cadres éthiques et pratiques</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Pilotage de projets IA</strong>
+                    <span>Accompagnement des PME/ETI dans l'intégration de solutions IA</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Formation des formateurs</strong>
+                    <span>Intégration de l'IA dans les pratiques pédagogiques</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Conformité légale & Sécurité</strong>
+                    <span>Application des réglementations pour une utilisation sécurisée</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="approche" class="tab-content">
+            <div class="expertise-list">
+                <div class="expertise-item">
+                    <strong>Apprentissage par la pratique</strong>
+                    <span>80% d'exercices en situation réelle</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Cas concrets</strong>
+                    <span>Travail sur les projets des participants</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Collaboration & Transfert</strong>
+                    <span>Approche interactive et partage de bonnes pratiques</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Supports réutilisables</strong>
+                    <span>Prompts, templates et outils clés en main</span>
+                </div>
+                <div class="expertise-item">
+                    <strong>Suivi post-formation</strong>
+                    <span>Veille partagée et accompagnement continu</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         TÉMOIGNAGES
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <section id="temoignages">
+        <div class="section-header">
+            <span class="section-label">// Retours d'expérience</span>
+            <h2 class="section-title">Ce qu'ils en disent</h2>
+            <p class="section-desc">Témoignages authentiques de participants aux formations.</p>
+        </div>
+        
+        <div class="testimonials-container">
+            <div class="testimonials-track">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">J'ai tout aimé, Freddy a été très pertinent et s'est montré super disponible.</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <span class="name">Participant</span>
+                            <span class="context">Formation Prompts Efficaces, CEGOS</span>
+                        </div>
+                        <span class="testimonial-score">97/100</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Très bonne connaissance du sujet, approche dynamique avec exercices et conseils. Démos vraiment agréables.</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <span class="name">Participant</span>
+                            <span class="context">Formation Productivité IA, Entreprise industrielle</span>
+                        </div>
+                        <span class="testimonial-score">86/100</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Restitution très claire et exhaustive. Merci Freddy !</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <span class="name">Nathalie H.</span>
+                            <span class="context">Directrice des Affaires Sociales</span>
+                        </div>
+                        <span class="testimonial-score">10/10</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Cela donne envie d'aller encore plus loin. Belle introduction, ça donne envie d'explorer plus profondément.</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <span class="name">Participants certifiés</span>
+                            <span class="context">Formation découverte IA</span>
+                        </div>
+                        <span class="testimonial-score">⭐</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Super formateur, tips sympa. Formation hyper intéressante avec découverte de nouveaux outils.</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <span class="name">Participants</span>
+                            <span class="context">Formation IA</span>
+                        </div>
+                        <span class="testimonial-score">⭐</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PARCOURS PROFESSIONNEL
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <section id="parcours">
+        <div class="section-header">
+            <span class="section-label">// Expérience</span>
+            <h2 class="section-title">Parcours professionnel</h2>
+            <p class="section-desc">Plus de 15 ans d'expertise en certification, optimisation de processus et transformation digitale.</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item current">
+                <div class="timeline-date">Depuis 2025</div>
+                <h3 class="timeline-title">Consultant & Formateur en Intelligence Artificielle</h3>
+                <div class="timeline-company">NEXELLIA</div>
+                <div class="timeline-desc">
+                    Conception et animation de formations sur mesure en IA pour des grands comptes, organismes de formation (CEGOS, Lefebvre Dalloz) et cabinets de conseil (Pulsa Conseil).
+                    <ul>
+                        <li>Acculturation à l'IA et automatisation des processus</li>
+                        <li>Stratégie et gouvernance, intégration responsable</li>
+                        <li>Développement de l'esprit critique et formation de formateurs</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2024 — 2025</div>
+                <h3 class="timeline-title">Chef de Projet — Référent Certification</h3>
+                <div class="timeline-company">CSTB — Pôle efficience des process opérationnels, Champs-sur-Marne</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Déploiement d'un outil de gestion de certification et accompagnement des équipes</li>
+                        <li>Optimisation des processus opérationnels et construction d'un reporting stratégique</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2015 — 2023</div>
+                <h3 class="timeline-title">Chef de Projet Certification</h3>
+                <div class="timeline-company">ASQUAL — Paris</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Gestion de 9 programmes de certification sous accréditation ISO/CEI 17065</li>
+                        <li>Génération d'un CA de 1,2 M€ et fidélisation de plus de 300 clients</li>
+                        <li>Révisions stratégiques des référentiels et digitalisation des processus</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2013 — 2015</div>
+                <h3 class="timeline-title">Ingénieur Certification</h3>
+                <div class="timeline-company">AFNOR Certification — Saint-Denis</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Développement et gestion de portefeuilles clients dans le secteur des transports (CA de 500 K€)</li>
+                        <li>Pilotage d'une équipe de 10 auditeurs et mise en place de systèmes d'amélioration continue</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2011 — 2013</div>
+                <h3 class="timeline-title">Chargé de Mission AMOA</h3>
+                <div class="timeline-company">AFNOR Certification — Saint-Denis</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Déploiement d'un logiciel de gestion de certification : coordination des équipes, tests, validation</li>
+                        <li>Formation de 60 opérationnels et accompagnement au changement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PUBLICATIONS
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <section id="publications">
+        <div class="section-header">
+            <span class="section-label">// Ressources</span>
+            <h2 class="section-title">Publications</h2>
+            <p class="section-desc">Articles de référence sur l'IA appliquée, l'automatisation et l'optimisation des processus.</p>
+        </div>
+        
+        <div class="publications-grid">
+            <article class="publication-card">
+                <div class="publication-preview">📊</div>
+                <div class="publication-info">
+                    <h4>Le Labo de la Productivité</h4>
+                    <p>Blog spécialisé pour entrepreneurs et professionnels sur l'IA appliquée</p>
+                    <a href="https://le-labo-de-la-productivite.fr" target="_blank" rel="noopener" class="publication-link">
+                        Visiter le site
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="publication-card">
+                <div class="publication-preview">🤖</div>
+                <div class="publication-info">
+                    <h4>Meilleure Intelligence Artificielle</h4>
+                    <p>Comparatif et guide des meilleures IA du marché</p>
+                    <a href="https://le-labo-de-la-productivite.fr/meilleure-intelligence-artificielle/" target="_blank" rel="noopener" class="publication-link">
+                        Lire l'article
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="publication-card">
+                <div class="publication-preview">🎯</div>
+                <div class="publication-info">
+                    <h4>Stratégies pour meilleurs résultats</h4>
+                    <p>Techniques avancées pour optimiser vos interactions avec l'IA</p>
+                    <a href="https://le-labo-de-la-productivite.fr/strategies-meilleurs-resultats-avec-ia/" target="_blank" rel="noopener" class="publication-link">
+                        Lire l'article
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="publication-card">
+                <div class="publication-preview">📝</div>
+                <div class="publication-info">
+                    <h4>26 Principes Clés du Prompt Engineering</h4>
+                    <p>Guide complet pour maîtriser l'art du prompting</p>
+                    <a href="https://le-labo-de-la-productivite.fr/26-principes-cles-prompt-engineering/" target="_blank" rel="noopener" class="publication-link">
+                        Lire l'article
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FORMATIONS & CERTIFICATIONS
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <section id="certifications">
+        <div class="section-header">
+            <span class="section-label">// Formation continue</span>
+            <h2 class="section-title">Formations & Certifications</h2>
+            <p class="section-desc">Un apprentissage continu pour rester à la pointe.</p>
+        </div>
+        
+        <div class="certifications-wrapper">
+            <div class="cert-category">
+                <h3>Formation continue</h3>
+                <div class="cert-list">
+                    <div class="cert-item in-progress">
+                        <span class="cert-year">2026</span>
+                        <span class="cert-name">Certification « Intégrer l'IA dans les missions du consultant formateur » - RS7138 (en cours)</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">2025</span>
+                        <span class="cert-name">Formation Formateur – CSTB</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">2025</span>
+                        <span class="cert-name">Formation ISO/CEI 17065 – CSTB</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">2024</span>
+                        <span class="cert-name">Formation automatisation Make – Shubham SHARMA & Contournement</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">2024</span>
+                        <span class="cert-name">Formation IAs génératives, APIs et expressions régulières – Contournement</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">2023</span>
+                        <span class="cert-name">WordPress – Certificat ICDL Édition de sites web</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cert-category">
+                <h3>Formation initiale</h3>
+                <div class="cert-list">
+                    <div class="cert-item">
+                        <span class="cert-year">2007</span>
+                        <span class="cert-name">Responsable QSE en Alternance (RNCP niveau 6) – INTERFOR</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">2003</span>
+                        <span class="cert-name">Spécialisation management de la qualité – ESPL</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">2001</span>
+                        <span class="cert-name">BTS Biochimie – Lycée Notre Dame Le Mans</span>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">Secteurs d'intervention</h3>
+                <div class="cert-list">
+                    <div class="cert-item">
+                        <span class="cert-year">→</span>
+                        <span class="cert-name">Certification produits et services</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">→</span>
+                        <span class="cert-name">Génie Civil et Bâtiment</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">→</span>
+                        <span class="cert-name">Industrie</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">→</span>
+                        <span class="cert-name">Informatique</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-year">→</span>
+                        <span class="cert-name">Formation professionnelle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         CONTACT
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <section id="contact">
+        <div class="contact-header">
+            <span class="section-label">// Passons à l'action</span>
+            <h2 class="section-title">Travaillons ensemble</h2>
+            <p class="section-desc">Prêt à transformer vos équipes avec l'IA ? Contactez-moi pour discuter de votre projet.</p>
+        </div>
+        
+        <div class="contact-grid">
+            <a href="mailto:freddy.fortin@nexellia.io" class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h4>Email</h4>
+                <p>freddy.fortin@nexellia.io</p>
+            </a>
+            
+            <a href="tel:+33666240104" class="contact-card">
+                <div class="contact-icon">📱</div>
+                <h4>Téléphone</h4>
+                <p>+33 6 66 24 01 04</p>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/freddyfortin/" target="_blank" rel="noopener" class="contact-card">
+                <div class="contact-icon">💼</div>
+                <h4>LinkedIn</h4>
+                <p>@freddyfortin</p>
+            </a>
+        </div>
+        
+        <a href="mailto:freddy.fortin@nexellia.io" class="contact-cta">
+            <span>Démarrer un projet</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">Freddy Fortin</div>
+            
+            <div class="footer-links">
+                <a href="mailto:freddy.fortin@nexellia.io">Email</a>
+                <a href="tel:+33666240104">Téléphone</a>
+                <a href="https://www.linkedin.com/in/freddyfortin/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://le-labo-de-la-productivite.fr" target="_blank" rel="noopener">Blog</a>
+            </div>
+            
+            <div class="footer-copy">© 2026 Freddy Fortin — Tous droits réservés</div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         SCRIPTS
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+        
+        // Load saved theme
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+        
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav-container');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Tab switching for expertise
+        function switchTab(tabId) {
+            // Remove active from all buttons and contents
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active to clicked button and corresponding content
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .formation-item, .testimonial-card, .publication-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
