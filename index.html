@@ -244,7 +244,7 @@
         }
 
         /* ══════════════════════════════════════════════════════════════════════
-           HERO SECTION - ASYMÉTRIQUE
+           HERO SECTION - CENTRÉ ET HARMONISÉ
         ══════════════════════════════════════════════════════════════════════ */
         .hero {
             min-height: 100vh;
@@ -290,15 +290,22 @@
         }
         
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
             letter-spacing: -0.02em;
         }
         
+        .title-highlight {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             font-weight: 400;
@@ -316,6 +323,7 @@
             display: flex;
             gap: 2rem;
             margin-bottom: 2.5rem;
+            flex-wrap: wrap;
         }
         
         .stat-item {
@@ -427,6 +435,7 @@
             border-radius: 50%;
             padding: 3px;
             background: var(--accent-gradient);
+            flex-shrink: 0;
         }
         
         .avatar-ring img {
@@ -514,38 +523,6 @@
             font-weight: 500;
             color: var(--text-secondary);
         }
-        
-        /* Floating elements */
-        .floating-badge {
-            position: absolute;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            padding: 0.75rem 1rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-soft);
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            animation: float 4s ease-in-out infinite;
-        }
-        
-        .floating-badge.top-right {
-            top: -20px;
-            right: -30px;
-            animation-delay: 0.5s;
-        }
-        
-        .floating-badge.bottom-left {
-            bottom: 40px;
-            left: -40px;
-            animation-delay: 1s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
 
         /* ══════════════════════════════════════════════════════════════════════
            SECTIONS COMMUNES
@@ -584,7 +561,7 @@
         }
 
         /* ══════════════════════════════════════════════════════════════════════
-           POURQUOI ME CHOISIR
+           POURQUOI ME CHOISIR - CARDS CENTRÉES
         ══════════════════════════════════════════════════════════════════════ */
         #pourquoi {
             background: var(--bg-secondary);
@@ -594,7 +571,7 @@
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
         }
         
@@ -602,25 +579,27 @@
             background: var(--bg-primary);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 2rem;
+            padding: 2rem 1.5rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
         
         .feature-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
             background: var(--accent-gradient);
-            transition: height 0.3s ease;
+            transition: width 0.3s ease;
         }
         
         .feature-card:hover::before {
-            height: 100%;
+            width: 100%;
         }
         
         .feature-card:hover {
@@ -629,25 +608,30 @@
         }
         
         .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--bg-accent);
-            border-radius: 12px;
+            width: 56px;
+            height: 56px;
+            background: var(--accent-gradient);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.25rem;
-            font-size: 1.5rem;
+            margin: 0 auto 1.25rem;
+            color: white;
+        }
+        
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
         }
         
         .feature-card h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
         }
         
         .feature-card p {
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             color: var(--text-secondary);
             line-height: 1.6;
         }
@@ -1235,8 +1219,14 @@
         }
 
         /* ══════════════════════════════════════════════════════════════════════
-           RESPONSIVE
+           RESPONSIVE - MOBILE FIRST
         ══════════════════════════════════════════════════════════════════════ */
+        @media (max-width: 1200px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 1024px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -1263,10 +1253,6 @@
             .hero-description {
                 margin-left: auto;
                 margin-right: auto;
-            }
-            
-            .floating-badge {
-                display: none;
             }
             
             .certifications-wrapper {
@@ -1308,8 +1294,11 @@
                 min-height: auto;
             }
             
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
             .hero-stats {
-                flex-wrap: wrap;
                 gap: 1.5rem;
             }
             
@@ -1317,8 +1306,17 @@
                 padding: 1.5rem;
             }
             
-            .card-metrics {
-                grid-template-columns: 1fr;
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .feature-card p {
+                font-size: 0.8rem;
             }
             
             .contact-grid {
@@ -1334,6 +1332,52 @@
             .footer-links {
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+            
+            .testimonials-track {
+                grid-template-columns: 1fr;
+            }
+            
+            .formations-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .expertise-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .publications-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .stat-item {
+                text-align: center;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .card-metrics {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1378,7 +1422,7 @@
                 <span>Disponible pour vos projets 2026</span>
             </div>
             
-            <h1>Consultant & Formateur<br>Intelligence Artificielle</h1>
+            <h1>Consultant & Formateur<br><span class="title-highlight">Intelligence Artificielle</span></h1>
             
             <p class="hero-subtitle">Transformation pédagogique et intégration stratégique de l'IA en entreprise</p>
             
@@ -1446,16 +1490,6 @@
                         <span class="partner-tag">Pulsa Conseil</span>
                     </div>
                 </div>
-                
-                <div class="floating-badge top-right">
-                    <span>🎯</span>
-                    <span>Résultats mesurables</span>
-                </div>
-                
-                <div class="floating-badge bottom-left">
-                    <span>⚡</span>
-                    <span>80% pratique</span>
-                </div>
             </div>
         </div>
     </section>
@@ -1472,25 +1506,50 @@
         
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">🏆</div>
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
                 <h3>Expertise reconnue</h3>
                 <p>Formateur évalué à <span class="feature-highlight">91/100</span> pour l'expertise et <span class="feature-highlight">88/100</span> pour la satisfaction globale.</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">🎯</div>
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
                 <h3>Approche sur-mesure</h3>
                 <p>Des parcours adaptés à vos enjeux, avec <span class="feature-highlight">80% de pratique</span> et des cas concrets issus de votre métier.</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">📈</div>
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="20" x2="12" y2="10"/>
+                        <line x1="18" y1="20" x2="18" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="16"/>
+                    </svg>
+                </div>
                 <h3>Résultats tangibles</h3>
                 <p>Augmentation de la productivité, automatisation des processus, et adoption réussie de l'IA dans vos équipes.</p>
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">🤝</div>
+                <div class="feature-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
                 <h3>Partenariats stratégiques</h3>
                 <p>Collaboration avec des leaders de la formation : CEGOS, Lefebvre Dalloz Compétences, Pulsa Conseil.</p>
             </div>
