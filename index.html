@@ -244,7 +244,7 @@
         }
 
         /* ══════════════════════════════════════════════════════════════════════
-           HERO SECTION - CENTRÉ ET HARMONISÉ
+           HERO SECTION - DESIGN MODERNE 2026
         ══════════════════════════════════════════════════════════════════════ */
         .hero {
             min-height: 100vh;
@@ -293,7 +293,7 @@
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             line-height: 1.15;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             letter-spacing: -0.02em;
         }
         
@@ -305,67 +305,39 @@
         }
         
         .hero-subtitle {
-            font-size: clamp(1rem, 1.8vw, 1.25rem);
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             font-weight: 400;
-            white-space: normal;
-            word-break: keep-all;
-            overflow-wrap: normal;
         }
         
         .hero-description {
             font-size: 1rem;
             color: var(--text-secondary);
-            max-width: 540px;
+            max-width: 520px;
             line-height: 1.7;
             margin-bottom: 2rem;
-        }
-        
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .stat-item {
-            text-align: left;
-        }
-        
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
         }
         
         .hero-actions {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-bottom: 2.5rem;
         }
         
         .btn-primary {
             background: var(--accent-gradient);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
+            padding: 1rem 1.75rem;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
         
         .btn-primary:hover {
@@ -376,8 +348,8 @@
         .btn-secondary {
             background: transparent;
             color: var(--text-primary);
-            padding: 1rem 2rem;
-            border-radius: 8px;
+            padding: 1rem 1.75rem;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             border: 1px solid var(--border-color);
@@ -385,6 +357,7 @@
             align-items: center;
             gap: 0.5rem;
             transition: all 0.2s ease;
+            font-size: 0.95rem;
         }
         
         .btn-secondary:hover {
@@ -392,7 +365,39 @@
             border-color: var(--accent-primary);
         }
         
-        /* Hero Visual */
+        /* Hero Partners */
+        .hero-partners {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .partners-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        .partners-list {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .partner-chip {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        
+        /* Hero Visual - Photo Grande */
         .hero-visual {
             position: relative;
             display: flex;
@@ -400,137 +405,114 @@
             align-items: center;
         }
         
-        .hero-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 2.5rem;
+        .hero-photo-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-photo {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--bg-secondary);
             box-shadow: var(--shadow-medium);
             position: relative;
-            max-width: 420px;
-            width: 100%;
+            z-index: 2;
         }
         
-        .hero-card::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 24px;
-            padding: 1px;
-            background: var(--accent-gradient);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0.5;
-        }
-        
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .avatar-ring {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            padding: 3px;
-            background: var(--accent-gradient);
-            flex-shrink: 0;
-        }
-        
-        .avatar-ring img {
+        .hero-photo img {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
             object-fit: cover;
-            background: var(--bg-secondary);
+            object-position: center top;
         }
         
-        .avatar-placeholder {
-            width: 100%;
-            height: 100%;
+        .hero-photo-decoration {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
             border-radius: 50%;
-            background: var(--bg-tertiary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-primary);
+            background: var(--accent-gradient);
+            opacity: 0.2;
+            z-index: 1;
+            animation: rotate 20s linear infinite;
         }
         
-        .card-identity h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
-        .card-identity p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        /* Stats flottantes autour de la photo */
+        .hero-stats-floating {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
         }
         
-        .card-metrics {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .metric-box {
-            background: var(--bg-tertiary);
-            padding: 1rem;
+        .stat-card {
+            position: absolute;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
+            padding: 1rem 1.25rem;
+            box-shadow: var(--shadow-soft);
+            pointer-events: auto;
+            min-width: 140px;
             text-align: center;
         }
         
-        .metric-box .value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-primary);
+        .stat-card:nth-child(1) {
+            top: 0;
+            right: 0;
         }
         
-        .metric-box .value .metric-unit {
-            font-size: 0.9rem;
+        .stat-card:nth-child(2) {
+            bottom: 20%;
+            right: -10px;
+        }
+        
+        .stat-card:nth-child(3) {
+            bottom: 0;
+            left: 0;
+        }
+        
+        .stat-card .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            line-height: 1;
+        }
+        
+        .stat-card .stat-value span {
+            font-size: 1rem;
             font-weight: 500;
             opacity: 0.7;
         }
         
-        .metric-box .label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-        
-        .card-partners {
-            border-top: 1px solid var(--border-color);
-            padding-top: 1.5rem;
-        }
-        
-        .card-partners-label {
+        .stat-card .stat-label {
             font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
             color: var(--text-muted);
-            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.35rem;
         }
         
-        .partner-logos {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
+        .stat-card.accent {
+            background: var(--accent-gradient);
+            border: none;
         }
         
-        .partner-tag {
-            background: var(--bg-accent);
-            padding: 0.4rem 0.8rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+        .stat-card.accent .stat-value,
+        .stat-card.accent .stat-value span {
+            color: white;
+        }
+        
+        .stat-card.accent .stat-label {
+            color: rgba(255,255,255,0.8);
         }
 
         /* ══════════════════════════════════════════════════════════════════════
@@ -1246,6 +1228,20 @@
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .hero-photo {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .stat-card {
+                padding: 0.75rem 1rem;
+                min-width: 120px;
+            }
+            
+            .stat-card .stat-value {
+                font-size: 1.5rem;
+            }
         }
         
         @media (max-width: 1024px) {
@@ -1263,10 +1259,6 @@
                 order: 1;
             }
             
-            .hero-stats {
-                justify-content: center;
-            }
-            
             .hero-actions {
                 justify-content: center;
             }
@@ -1274,6 +1266,32 @@
             .hero-description {
                 margin-left: auto;
                 margin-right: auto;
+            }
+            
+            .hero-partners {
+                justify-content: center;
+            }
+            
+            .hero-photo {
+                width: 240px;
+                height: 240px;
+            }
+            
+            .hero-stats-floating {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 2rem;
+                flex-wrap: wrap;
+            }
+            
+            .stat-card {
+                position: static;
+            }
+            
+            .hero-photo-decoration {
+                display: none;
             }
             
             .certifications-wrapper {
@@ -1319,12 +1337,9 @@
                 font-size: 2rem;
             }
             
-            .hero-stats {
-                gap: 1.5rem;
-            }
-            
-            .hero-card {
-                padding: 1.5rem;
+            .hero-photo {
+                width: 200px;
+                height: 200px;
             }
             
             .features-grid {
@@ -1376,14 +1391,14 @@
                 grid-template-columns: 1fr;
             }
             
-            .hero-stats {
+            .hero-stats-floating {
                 flex-direction: column;
                 align-items: center;
-                gap: 1rem;
             }
             
-            .stat-item {
-                text-align: center;
+            .stat-card {
+                width: 100%;
+                max-width: 200px;
             }
             
             .hero-actions {
@@ -1396,8 +1411,9 @@
                 justify-content: center;
             }
             
-            .card-metrics {
-                grid-template-columns: 1fr;
+            .hero-partners {
+                flex-direction: column;
+                gap: 0.75rem;
             }
         }
     </style>
@@ -1434,7 +1450,7 @@
     </header>
 
     <!-- ═══════════════════════════════════════════════════════════════════════
-         HERO
+         HERO - DESIGN MODERNE 2026
     ═══════════════════════════════════════════════════════════════════════ -->
     <section class="hero" id="hero">
         <div class="hero-content">
@@ -1451,21 +1467,6 @@
                 en transformant les défis technologiques en opportunités concrètes.
             </p>
             
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-value">91/100</div>
-                    <div class="stat-label">Expertise formateur</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">88/100</div>
-                    <div class="stat-label">Satisfaction NPS</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">80%</div>
-                    <div class="stat-label">Pratique</div>
-                </div>
-            </div>
-            
             <div class="hero-actions">
                 <a href="#contact" class="btn-primary">
                     <span>Discutons de votre projet</span>
@@ -1477,38 +1478,37 @@
                     <span>Voir les formations</span>
                 </a>
             </div>
+            
+            <div class="hero-partners">
+                <span class="partners-label">Ils me font confiance</span>
+                <div class="partners-list">
+                    <span class="partner-chip">CEGOS</span>
+                    <span class="partner-chip">Lefebvre Dalloz</span>
+                    <span class="partner-chip">Pulsa Conseil</span>
+                </div>
+            </div>
         </div>
         
         <div class="hero-visual">
-            <div class="hero-card">
-                <div class="card-header">
-                    <div class="avatar-ring">
-                        <img src="FortinFreddy.jpg" alt="Freddy Fortin - Consultant et Formateur IA">
-                    </div>
-                    <div class="card-identity">
-                        <h3>Freddy Fortin</h3>
-                        <p>Consultant & Formateur IA</p>
-                    </div>
+            <div class="hero-photo-container">
+                <div class="hero-photo">
+                    <img src="FortinFreddy.jpg" alt="Freddy Fortin - Consultant et Formateur IA">
                 </div>
-                
-                <div class="card-metrics">
-                    <div class="metric-box">
-                        <div class="value">91<span class="metric-unit">/100</span></div>
-                        <div class="label">Score expertise</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="value">88<span class="metric-unit">/100</span></div>
-                        <div class="label">Satisfaction</div>
-                    </div>
+                <div class="hero-photo-decoration"></div>
+            </div>
+            
+            <div class="hero-stats-floating">
+                <div class="stat-card">
+                    <div class="stat-value">91<span>/100</span></div>
+                    <div class="stat-label">Expertise formateur</div>
                 </div>
-                
-                <div class="card-partners">
-                    <div class="card-partners-label">Partenaires de confiance</div>
-                    <div class="partner-logos">
-                        <span class="partner-tag">CEGOS</span>
-                        <span class="partner-tag">Lefebvre Dalloz</span>
-                        <span class="partner-tag">Pulsa Conseil</span>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-value">88<span>/100</span></div>
+                    <div class="stat-label">Satisfaction NPS</div>
+                </div>
+                <div class="stat-card accent">
+                    <div class="stat-value">80<span>%</span></div>
+                    <div class="stat-label">Exercices pratiques</div>
                 </div>
             </div>
         </div>
