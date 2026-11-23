@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freddy Fortin | Consultant & Formateur IA</title>
+    <meta name="description" content="Consultant et formateur en intelligence artificielle. Transformation pédagogique et intégration stratégique de l'IA en entreprise.">
+    <meta name="author" content="Freddy Fortin">
+    <meta name="robots" content="index, follow">
+    <!-- IMPORTANT: Remplacez 'votre-username' par votre nom d'utilisateur GitHub -->
+    <link rel="canonical" href="https://votre-username.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://votre-username.github.io/">
+    <meta property="og:title" content="Freddy Fortin | Consultant & Formateur IA">
+    <meta property="og:description" content="Consultant et formateur en intelligence artificielle. Transformation pédagogique et intégration stratégique de l'IA en entreprise.">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Freddy Fortin | Consultant & Formateur IA">
+    <meta name="twitter:description" content="Consultant et formateur en intelligence artificielle. Transformation pédagogique et intégration stratégique de l'IA en entreprise.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Palette « Fiery Ocean » (coolors.co) : 003049 encre, C1121F accent, 780000 accent foncé, 669BBC bleu doux, FDF0D5 crème (éclairci pour le fond) */
+        :root {
+            --fond: #FDF9F1;
+            --fond-alt: #FDF0D5;
+            --encre: #003049;
+            --texte: #2B4556;
+            --texte-doux: #5A7182;
+            --accent: #C1121F;
+            --accent-fonce: #780000;
+            --bleu-doux: #669BBC;
+            --trait: rgba(0, 48, 73, 0.14);
+
+            --titre-taille: 3.4rem;
+            --espace: 6rem;
+            --arrondi: 4px;
+
+            --serif: 'Newsreader', Georgia, serif;
+            --sans: 'Public Sans', system-ui, sans-serif;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+        body {
+            font-family: var(--sans);
+            font-size: 1rem;
+            line-height: 1.65;
+            color: var(--texte);
+            background: var(--fond);
+        }
+        a { color: inherit; }
+        a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+        ::selection { background: var(--encre); color: #fff; }
+
+        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ── En-tête ── */
+        header {
+            position: sticky; top: 0; z-index: 10;
+            background: var(--fond);
+            border-bottom: 1px solid var(--trait);
+        }
+        header .wrap {
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px; gap: 2rem;
+        }
+        .logo {
+            font-family: var(--serif); font-size: 1.25rem; font-weight: 500;
+            color: var(--encre); text-decoration: none;
+        }
+        nav ul { display: flex; gap: 1.75rem; list-style: none; }
+        nav a {
+            font-size: 0.875rem; color: var(--texte-doux); text-decoration: none;
+        }
+        nav a:hover { color: var(--encre); }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent); color: #fff;
+            padding: 0.7rem 1.3rem; border-radius: var(--arrondi);
+            font-size: 0.9rem; font-weight: 600; text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: var(--accent-fonce); }
+        .btn-lien {
+            font-size: 0.9rem; font-weight: 600; color: var(--encre);
+            text-decoration: underline; text-underline-offset: 4px;
+            text-decoration-color: var(--bleu-doux);
+        }
+        .btn-lien:hover { text-decoration-color: var(--encre); }
+
+        /* ── Accroche ── */
+        .hero { padding: 5rem 0 4rem; }
+        .hero .wrap {
+            display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: center;
+        }
+        .surtitre {
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 1.25rem;
+        }
+        h1, h2, h3 { font-family: var(--serif); font-weight: 400; color: var(--encre); line-height: 1.15; }
+        h1 { font-size: var(--titre-taille); letter-spacing: -0.01em; margin-bottom: 1.5rem; }
+        .hero .intro { font-size: 1.15rem; max-width: 34em; margin-bottom: 1rem; }
+        .hero .detail { color: var(--texte-doux); max-width: 34em; margin-bottom: 2rem; }
+        .actions { display: flex; gap: 1.75rem; align-items: center; flex-wrap: wrap; }
+
+        .portrait { margin: 0; max-width: 340px; justify-self: end; width: 100%; }
+        .portrait img {
+            display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%;
+            border-radius: var(--arrondi);
+        }
+
+        /* ── Preuves ── */
+        .preuves { border-top: 1px solid var(--trait); border-bottom: 1px solid var(--trait); }
+        .preuves .wrap { display: grid; grid-template-columns: 1fr 1fr 1.5fr; }
+        .preuves .wrap > div { padding: 1.75rem 2rem; }
+        .preuves .wrap > div:first-child { padding-left: 0; }
+        .preuves .wrap > div + div { border-left: 1px solid var(--trait); }
+        .preuve strong {
+            display: block; font-family: var(--serif); font-weight: 400; font-size: 1.6rem;
+            color: var(--encre); line-height: 1.2; margin-bottom: 0.3rem;
+        }
+        .preuve span, .references-titre { font-size: 0.85rem; line-height: 1.5; color: var(--texte-doux); }
+        .references-titre { margin-bottom: 0.6rem; }
+        .references ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem 1.5rem; }
+        .references li { font-size: 1rem; font-weight: 500; color: var(--encre); white-space: nowrap; }
+
+        /* ── Sections : titre à gauche, contenu à droite ── */
+        section.bloc { padding: var(--espace) 0; border-bottom: 1px solid var(--trait); }
+        section.bloc .wrap { display: grid; grid-template-columns: 260px 1fr; gap: 3rem; }
+        .bloc-titre h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+        .bloc-titre p { font-size: 0.95rem; color: var(--texte-doux); }
+        .num { display: block; font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+
+        .liste-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 3rem; }
+        .item { padding: 1.25rem 0; border-top: 1px solid var(--trait); }
+        .item h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; margin-bottom: 0.35rem; }
+        .item p { font-size: 0.925rem; }
+        .item .idx { font-size: 0.8rem; color: var(--texte-doux); margin-right: 0.5rem; font-weight: 500; }
+
+        /* Expertise */
+        .groupes { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem; }
+        .groupe h3 { font-size: 1.35rem; margin-bottom: 0.75rem; }
+        .groupe dl > div { padding: 0.8rem 0; border-top: 1px solid var(--trait); }
+        .groupe dt { font-weight: 600; color: var(--encre); font-size: 0.95rem; }
+        .groupe dd { font-size: 0.9rem; color: var(--texte-doux); }
+
+        /* Témoignages */
+        .citations { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem; }
+        blockquote { border-left: 2px solid var(--accent); padding-left: 1.25rem; }
+        blockquote p { font-family: var(--serif); font-size: 1.25rem; line-height: 1.45; color: var(--encre); margin-bottom: 0.75rem; }
+        blockquote footer { font-size: 0.85rem; color: var(--texte-doux); }
+        blockquote footer b { color: var(--texte); font-weight: 600; }
+
+        /* Parcours */
+        .poste { display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid var(--trait); }
+        .poste:first-child { border-top: 0; padding-top: 0; }
+        .date { font-size: 0.85rem; color: var(--texte-doux); font-variant-numeric: tabular-nums; }
+        .poste h3 { font-family: var(--sans); font-size: 1.05rem; font-weight: 600; }
+        .poste .org { font-size: 0.9rem; color: var(--texte-doux); margin-bottom: 0.6rem; }
+        .poste p, .poste li { font-size: 0.925rem; }
+        .poste ul { padding-left: 1.1rem; margin-top: 0.4rem; }
+        .poste li { margin-bottom: 0.3rem; }
+        .poste li::marker { color: var(--bleu-doux); }
+
+        /* Publications */
+        .pub { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; padding: 1.25rem 0; border-top: 1px solid var(--trait); text-decoration: none; }
+        .pub:first-child { border-top: 0; padding-top: 0; }
+        .pub h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; margin-bottom: 0.2rem; }
+        .pub p { font-size: 0.9rem; color: var(--texte-doux); }
+        .pub .lire { font-size: 0.85rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
+        .pub:hover h3 { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--bleu-doux); }
+
+        /* Certifications */
+        .certifs h3 { font-size: 1.35rem; margin-bottom: 0.75rem; }
+        .certifs h3:not(:first-child) { margin-top: 2.5rem; }
+        .ligne { display: grid; grid-template-columns: 60px 1fr; gap: 1rem; padding: 0.7rem 0; border-top: 1px solid var(--trait); font-size: 0.925rem; }
+        .ligne .date { padding-top: 0.05rem; }
+        .secteurs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .secteurs li { list-style: none; font-size: 0.875rem; padding: 0.3rem 0.75rem; border: 1px solid var(--trait); border-radius: var(--arrondi); }
+
+        /* Contact */
+        #contact { background: var(--encre); color: #E6EEF2; padding: var(--espace) 0; }
+        #contact h2 { color: #fff; font-size: 2.4rem; margin-bottom: 1rem; }
+        #contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; }
+        #contact .intro { max-width: 30em; margin-bottom: 2rem; }
+        .coords > div { padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.18); display: grid; grid-template-columns: 110px 1fr; gap: 1rem; }
+        .coords dt { font-size: 0.85rem; color: #9FB8C8; }
+        .coords a { color: #fff; text-decoration: none; }
+        .coords a:hover { text-decoration: underline; text-underline-offset: 3px; }
+        #contact .btn:hover { background: var(--accent-fonce); }
+        #contact .num { color: #9FB8C8; }
+        #contact a:focus-visible { outline-color: #fff; }
+
+        .pied { padding: 2rem 0; font-size: 0.85rem; color: var(--texte-doux); }
+        .pied .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+        .pied a { text-decoration: none; margin-left: 1.25rem; }
+        .pied a:hover { color: var(--encre); }
+
+        /* ── Mobile ── */
+        @media (max-width: 960px) {
+            html { scroll-padding-top: 112px; }
+            header .wrap { flex-wrap: wrap; height: auto; padding-top: 0.75rem; row-gap: 0.5rem; }
+            nav { order: 3; width: 100%; overflow-x: auto; scrollbar-width: none; }
+            nav::-webkit-scrollbar { display: none; }
+            nav ul { gap: 1.25rem; white-space: nowrap; padding-bottom: 0.6rem; }
+            .hero .wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+            .portrait { max-width: 280px; justify-self: start; }
+            .preuves .wrap { grid-template-columns: 1fr 1fr; }
+            .preuves .wrap > .references { grid-column: 1 / -1; border-left: 0 !important; border-top: 1px solid var(--trait); padding-left: 0; }
+            section.bloc .wrap, #contact .wrap { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        @media (max-width: 680px) {
+            :root { --titre-taille: 2.4rem; --espace: 4rem; }
+            .wrap { padding: 0 1.25rem; }
+            .hero { padding: 3rem 0; }
+            .preuves .wrap { grid-template-columns: 1fr; }
+            .preuves .wrap > div { padding: 1.25rem 0; border-left: 0 !important; }
+            .preuves .wrap > div + div { border-top: 1px solid var(--trait); }
+            .liste-2, .groupes, .citations { grid-template-columns: 1fr; }
+            .poste { grid-template-columns: 1fr; gap: 0.25rem; }
+            .pub { flex-direction: column; gap: 0.4rem; }
+            .coords > div { grid-template-columns: 1fr; gap: 0.1rem; }
+            .pied a { margin: 0 1.25rem 0 0; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a href="#" class="logo">Freddy Fortin</a>
+        <nav aria-label="Navigation principale">
+            <ul>
+                <li><a href="#pourquoi">Pourquoi moi</a></li>
+                <li><a href="#formations">Formations</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#temoignages">Témoignages</a></li>
+                <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#publications">Publications</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="btn">Me contacter</a>
+    </div>
+</header>
+
+<main>
+    <!-- Accroche -->
+    <section class="hero">
+        <div class="wrap">
+            <div>
+                <p class="surtitre">Disponible pour vos projets 2027</p>
+                <h1>Consultant & formateur en intelligence artificielle</h1>
+                <p class="intro">Transformation pédagogique et intégration stratégique de l'IA en entreprise.</p>
+                <p class="detail">J'accompagne les organisations et les professionnels dans l'adoption intelligente et responsable de l'IA, en transformant les défis technologiques en opportunités concrètes.</p>
+                <div class="actions">
+                    <a href="#contact" class="btn">Discutons de votre projet</a>
+                    <a href="#formations" class="btn-lien">Voir les formations</a>
+                </div>
+            </div>
+            <figure class="portrait">
+                <img src="FortinFreddy.jpg" alt="Portrait de Freddy Fortin, consultant et formateur IA" width="900" height="1128">
+            </figure>
+        </div>
+    </section>
+
+    <!-- Preuves chiffrées + références -->
+    <div class="preuves">
+        <div class="wrap">
+            <div class="preuve">
+                <strong>91,8/100</strong>
+                <span>Expertise du formateur, évaluations Cegos 2026 (100 répondants)</span>
+            </div>
+            <div class="preuve">
+                <strong>9,3 à 9,5&nbsp;/&nbsp;10</strong>
+                <span>Recommandation du parcours certifiant formateurs, Valeurs & Talents</span>
+            </div>
+            <div class="references">
+                <p class="references-titre">Ils m'ont fait confiance</p>
+                <ul>
+                    <li>Cegos</li>
+                    <li>Lefebvre Dalloz</li>
+                    <li>Valeurs &amp; Talents</li>
+                    <li>CSTB</li>
+                    <li>Pulsa Conseil</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pourquoi moi -->
+    <section class="bloc" id="pourquoi">
+        <div class="wrap">
+            <div class="bloc-titre">
+                <span class="num">01</span>
+                <h2>Pourquoi me choisir</h2>
+                <p>Des formations qui allient expertise technique, pédagogie active et résultats mesurables.</p>
+            </div>
+            <div class="liste-2">
+                <div class="item">
+                    <h3>Expertise reconnue</h3>
+                    <p>Évalué à 91,8/100 pour l'expertise par les participants Cegos en 2026 (100 répondants).</p>
+                </div>
+                <div class="item">
+                    <h3>Approche sur mesure</h3>
+                    <p>Des parcours adaptés à vos enjeux, avec des cas concrets issus de votre métier.</p>
+                </div>
+                <div class="item">
+                    <h3>Résultats tangibles</h3>
+                    <p>Augmentation de la productivité, automatisation des processus et adoption réussie de l'IA dans vos équipes.</p>
+                </div>
+                <div class="item">
+                    <h3>Partenariats stratégiques</h3>
+                    <p>Collaboration avec des acteurs de la formation : Cegos, Lefebvre Dalloz Compétences, Valeurs & Talents, Pulsa Conseil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations -->
+    <section class="bloc" id="formations">
+        <div class="wrap">
+            <div class="bloc-titre">
+                <span class="num">02</span>
+                <h2>Formations phares en IA</h2>
+                <p>Des modules conçus pour déclencher l'action et ancrer les compétences.</p>
+            </div>
+            <div class="liste-2">
+                <div class="item"><h3><span class="idx">01</span>Productivité & efficacité</h3><p>Utiliser l'IA pour gagner du temps et optimiser ses processus.</p></div>
+                <div class="item"><h3><span class="idx">02</span>Création de contenu</h3><p>Générer des supports professionnels avec l'IA (textes, visuels, vidéos).</p></div>
+                <div class="item"><h3><span class="idx">03</span>Créativité & innovation</h3><p>Stimuler l'innovation grâce aux outils d'IA générative.</p></div>
+                <div class="item"><h3><span class="idx">04</span>Veille stratégique</h3><p>Automatiser et analyser sa veille avec l'IA.</p></div>
+                <div class="item"><h3><span class="idx">05</span>Transformation des métiers</h3><p>Intégrer l'IA dans les missions de formateur ou de manager.</p></div>
+                <div class="item"><h3><span class="idx">06</span>Assistants IA personnalisés</h3><p>Créer des outils sur mesure pour simplifier le quotidien.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise -->
+    <section class="bloc" id="expertise">
+        <div class="wrap">
+            <div class="bloc-titre">
+                <span class="num">03</span>
+                <h2>Domaines d'expertise</h2>
+                <p>Une triple compétence technique, pédagogique et stratégique.</p>
+            </div>
+            <div class="groupes">
+                <div class="groupe">
+                    <h3>Maîtrise technique</h3>
+                    <dl>
+                        <div><dt>IA générative & prompt engineering</dt><dd>Utilisation experte de ChatGPT, Gemini, Claude, Microsoft Copilot et conception de prompts optimisés</dd></div>
+                        <div><dt>Diagnostic & cas d'usage</dt><dd>Identification des opportunités IA adaptées à vos besoins métiers</dd></div>
+                        <div><dt>Déploiement d'assistants IA</dt><dd>Intégration d'outils sur mesure et formation des équipes</dd></div>
+                        <div><dt>Automatisation no-code</dt><dd>Création de workflows intelligents sans développement technique</dd></div>
+                        <div><dt>Analyse critique des résultats de l'IA</dt><dd>Détection des biais, des hallucinations et évaluation de la qualité</dd></div>
+                        <div><dt>Stratégie & gouvernance IA</dt><dd>Élaboration de cadres conformes aux enjeux réglementaires et éthiques</dd></div>
+                    </dl>
+                </div>
+                <div class="groupe">
+                    <h3>Pédagogie</h3>
+                    <dl>
+                        <div><dt>Ingénierie de formation</dt><dd>Parcours certifiants, adaptés aux besoins et aux publics</dd></div>
+                        <div><dt>Animation multiforme</dt><dd>Sessions en présentiel, distanciel ou hybride (de 3&nbsp;h à 5&nbsp;jours)</dd></div>
+                        <div><dt>Création d'agents IA pédagogiques</dt><dd>Assistants conversationnels et outils métiers personnalisés</dd></div>
+                        <div><dt>Production de contenus multimédias</dt><dd>Podcasts, vidéos, modules e-learning</dd></div>
+                        <div><dt>Évaluation & amélioration</dt><dd>Mesure des acquis et analyse de la satisfaction</dd></div>
+                    </dl>
+                </div>
+                <div class="groupe">
+                    <h3>Accompagnement</h3>
+                    <dl>
+                        <div><dt>Acculturation des dirigeants</dt><dd>Sensibilisation aux enjeux business et stratégiques de l'IA</dd></div>
+                        <div><dt>Chartes d'usage responsable</dt><dd>Élaboration de cadres éthiques et pratiques</dd></div>
+                        <div><dt>Pilotage de projets IA</dt><dd>Accompagnement des PME et ETI dans l'intégration de solutions IA</dd></div>
+                        <div><dt>Formation des formateurs</dt><dd>Intégration de l'IA dans les pratiques pédagogiques</dd></div>
+                        <div><dt>Conformité légale & sécurité</dt><dd>Application des réglementations pour une utilisation sécurisée</dd></div>
+                    </dl>
+                </div>
+                <div class="groupe">
+                    <h3>Approche</h3>
+                    <dl>
+                        <div><dt>Apprentissage par la pratique</dt><dd>Exercices en situation réelle</dd></div>
+                        <div><dt>Cas concrets</dt><dd>Travail sur les projets des participants</dd></div>
+                        <div><dt>Collaboration & transfert</dt><dd>Approche interactive et partage de bonnes pratiques</dd></div>
+                        <div><dt>Supports réutilisables</dt><dd>Prompts, modèles et outils clés en main</dd></div>
+                        <div><dt>Suivi post-formation</dt><dd>Veille partagée et accompagnement continu</dd></div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section class="bloc" id="temoignages">
+        <div class="wrap">
+            <div class="bloc-titre">
+                <span class="num">04</span>
+                <h2>Ce qu'ils en disent</h2>
+                <p>Verbatims de participants, anonymisés.</p>
+            </div>
+            <div class="citations">
+                <blockquote>
+                    <p>«&nbsp;J'ai tout aimé, Freddy a été très pertinent et s'est montré super disponible.&nbsp;»</p>
+                    <footer><b>Participant</b>, formation Prompts efficaces, Cegos · 97/100</footer>
+                </blockquote>
+                <blockquote>
+                    <p>«&nbsp;Très bonne connaissance du sujet, approche dynamique avec exercices et conseils. Démos vraiment agréables.&nbsp;»</p>
+                    <footer><b>Participant</b>, formation Productivité IA, entreprise industrielle · 86/100</footer>
+                </blockquote>
+                <blockquote>
+                    <p>«&nbsp;Restitution très claire et exhaustive. Merci Freddy !&nbsp;»</p>
+                    <footer><b>Directrice des affaires sociales</b> · 10/10</footer>
+                </blockquote>
+                <blockquote>
+                    <p>«&nbsp;Cela donne envie d'aller encore plus loin. Belle introduction, ça donne envie d'explorer plus profondément.&nbsp;»</p>
+                    <footer><b>Participants certifiés</b>, formation découverte IA</footer>
+                </blockquote>
+                <blockquote>
+                    <p>«&nbsp;Super formateur, tips sympa. Formation hyper intéressante avec découverte de nouveaux outils.&nbsp;»</p>
+                    <footer><b>Participants</b>, formation IA</footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parcours -->
+    <section class="bloc" id="parcours">
+        <div class="wrap">
+            <div class="bloc-titre">
+                <span class="num">05</span>
+                <h2>Parcours professionnel</h2>
+                <p>Plus de 15 ans d'expertise en certification, optimisation de processus et transformation digitale.</p>
+            </div>
+            <div>
+                <div class="poste">
+                    <span class="date">Depuis 2025</span>
+                    <div>
+                        <h3>Consultant & formateur en intelligence artificielle</h3>
+                        <p class="org">Nexellia</p>
+                        <p>Conception et animation de formations sur mesure en IA pour des grands comptes, des organismes de formation (Cegos, Lefebvre Dalloz, Valeurs & Talents) et des cabinets de conseil (Pulsa Conseil).</p>
+                        <ul>
+                            <li>Acculturation à l'IA et automatisation des processus</li>
+                            <li>Stratégie et gouvernance, intégration responsable</li>
+                            <li>Développement de l'esprit critique et formation de formateurs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="poste">
+                    <span class="date">2024 – 2025</span>
+                    <div>
+                        <h3>Chef de projet, référent certification</h3>
+                        <p class="org">CSTB, pôle efficience des process opérationnels, Champs-sur-Marne</p>
+                        <ul>
+                            <li>Déploiement d'un outil de gestion de certification et accompagnement des équipes</li>
+                            <li>Optimisation des processus opérationnels et construction d'un reporting stratégique</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="poste">
+                    <span class="date">2015 – 2023</span>
+                    <div>
+                        <h3>Chef de projet certification</h3>
+                        <p class="org">ASQUAL, Paris</p>
+                        <ul>
+                            <li>Gestion de 9 programmes de certification sous accréditation ISO/CEI 17065</li>
+                            <li>Génération d'un CA de 1,2&nbsp;M€ et fidélisation de plus de 300 clients</li>
+                            <li>Révisions stratégiques des référentiels et digitalisation des processus</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="poste">
+                    <span class="date">2013 – 2015</span>
+                    <div>
+                        <h3>Ingénieur certification</h3>
+                        <p class="org">AFNOR Certification, Saint-Denis</p>
+                        <ul>
+                            <li>Développement et gestion de portefeuilles clients dans le secteur des transports (CA de 500&nbsp;k€)</li>
+                            <li>Pilotage d'une équipe de 10 auditeurs et mise en place de systèmes d'amélioration continue</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="poste">
+                    <span class="date">2011 – 2013</span>
+                    <div>
+                        <h3>Chargé de mission AMOA</h3>
+                        <p class="org">AFNOR Certification, Saint-Denis</p>
+                        <ul>
+                            <li>Déploiement d'un logiciel de gestion de certification : coordination des équipes, tests, validation</li>
+                            <li>Formation de 60 opérationnels et accompagnement au changement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications -->
+    <section class="bloc" id="publications">
+        <div class="wrap">
+            <div class="bloc-titre">
+                <span class="num">06</span>
+                <h2>Publications</h2>
+                <p>Articles sur l'IA appliquée, l'automatisation et l'optimisation des processus.</p>
+            </div>
+            <div>
+                <a class="pub" href="https://le-labo-de-la-productivite.fr" target="_blank" rel="noopener">
+                    <div><h3>Le Labo de la productivité</h3><p>Blog pour entrepreneurs et professionnels sur l'IA appliquée</p></div>
+                    <span class="lire">Visiter le site</span>
+                </a>
+                <a class="pub" href="https://le-labo-de-la-productivite.fr/meilleure-intelligence-artificielle/" target="_blank" rel="noopener">
+                    <div><h3>Meilleure intelligence artificielle</h3><p>Comparatif et guide des meilleures IA du marché</p></div>
+                    <span class="lire">Lire l'article</span>
+                </a>
+                <a class="pub" href="https://le-labo-de-la-productivite.fr/strategies-meilleurs-resultats-avec-ia/" target="_blank" rel="noopener">
+                    <div><h3>Stratégies pour de meilleurs résultats</h3><p>Techniques avancées pour optimiser vos interactions avec l'IA</p></div>
+                    <span class="lire">Lire l'article</span>
+                </a>
+                <a class="pub" href="https://le-labo-de-la-productivite.fr/26-principes-cles-prompt-engineering/" target="_blank" rel="noopener">
+                    <div><h3>26 principes clés du prompt engineering</h3><p>Guide complet pour maîtriser l'art du prompting</p></div>
+                    <span class="lire">Lire l'article</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations & certifications -->
+    <section class="bloc" id="certifications">
+        <div class="wrap">
+            <div class="bloc-titre">
+                <span class="num">07</span>
+                <h2>Formations & certifications</h2>
+                <p>Un apprentissage continu pour rester à la pointe.</p>
+            </div>
+            <div class="certifs">
+                <h3>Formation continue</h3>
+                <div class="ligne"><span class="date">2026</span><span>Certification «&nbsp;Intégrer l'IA dans les missions du consultant formateur&nbsp;» (RS7138)</span></div>
+                <div class="ligne"><span class="date">2025</span><span>Formation formateur, CSTB</span></div>
+                <div class="ligne"><span class="date">2025</span><span>Formation ISO/CEI 17065, CSTB</span></div>
+                <div class="ligne"><span class="date">2024</span><span>Formation automatisation Make, Shubham Sharma & Contournement</span></div>
+                <div class="ligne"><span class="date">2024</span><span>Formation IA génératives, API et expressions régulières, Contournement</span></div>
+                <div class="ligne"><span class="date">2023</span><span>WordPress, certificat ICDL Édition de sites web</span></div>
+
+                <h3>Formation initiale</h3>
+                <div class="ligne"><span class="date">2007</span><span>Responsable QSE en alternance (RNCP niveau 6), INTERFOR</span></div>
+                <div class="ligne"><span class="date">2003</span><span>Spécialisation management de la qualité, ESPL</span></div>
+                <div class="ligne"><span class="date">2001</span><span>BTS Biochimie, lycée Notre-Dame, Le Mans</span></div>
+
+                <h3>Secteurs d'intervention</h3>
+                <ul class="secteurs">
+                    <li>Certification produits et services</li>
+                    <li>Génie civil et bâtiment</li>
+                    <li>Industrie</li>
+                    <li>Informatique</li>
+                    <li>Formation professionnelle</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Contact -->
+<section id="contact">
+    <div class="wrap">
+        <div>
+            <span class="num">08</span>
+            <h2>Travaillons ensemble</h2>
+            <p class="intro">Vous voulez transformer vos équipes avec l'IA ? Contactez-moi pour discuter de votre projet.</p>
+            <a href="mailto:freddy.fortin@nexellia.io" class="btn">Démarrer un projet</a>
+        </div>
+        <dl class="coords">
+            <div><dt>E-mail</dt><dd><a href="mailto:freddy.fortin@nexellia.io">freddy.fortin@nexellia.io</a></dd></div>
+            <div><dt>Téléphone</dt><dd><a href="tel:+33666240104">+33 6 66 24 01 04</a></dd></div>
+            <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/freddyfortin/" target="_blank" rel="noopener">linkedin.com/in/freddyfortin</a></dd></div>
+        </dl>
+    </div>
+</section>
+</main>
+
+<footer class="pied">
+    <div class="wrap">
+        <span>© 2026 Freddy Fortin</span>
+        <span>
+            <a href="mailto:freddy.fortin@nexellia.io">E-mail</a>
+            <a href="tel:+33666240104">Téléphone</a>
+            <a href="https://www.linkedin.com/in/freddyfortin/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://le-labo-de-la-productivite.fr" target="_blank" rel="noopener">Blog</a>
+        </span>
+    </div>
+</footer>
+
+
+</body>
+</html>
